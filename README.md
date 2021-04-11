@@ -6,10 +6,15 @@
 | ------------------- |
 | Project poster      |
 | Eindopdracht ideeën |
+| Plan van aanpak     |
 | Installatie         | 
 | License             |
 
 # :flower_playing_cards: Project poster
+
+# :computer: Live demo
+
+[Link naar de gedeployde Heroku app](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 # :bulb: Eindopdracht ideeën
 
@@ -20,6 +25,23 @@ Ik gebruik de steam API om de library van users op te halen en aan de hand van j
 ## :video_game: Turn based fighter game
 
 Ik gebruik een API (ik weer nog niet welke) om data op te halen van charcters die je kan kiezen om mee te vechten tegen andere spelers. Je vecht net als in pokémon of steen papier schaar met beurten. Je kunt kiezen uit verschillende aanvallen en wie als laatste over blijft wint. Je character kan je levelen als je meer vecht en worden daarmee je aanvallen en bescherming sterker.
+
+# Plan van aanpak
+
+Eerst moet ik natuurlijk één van de ideeën kiezen. Op dit moment neig ik toch meer naar het tweede idee. Maar voor beiden zijn de grote lijnen het zelfde. Het moet mogelijk zijn 
+om in te loggen en om scores of chats bij te houden per gebruiker. Daarvoor ben ik van plan om MongoDB of Firebase te gebruiken. Ik zal dus ook nog in de documentatie moeten duiken
+om te zorgen dat ik dat kan koppelen aan mijn server. Dan moet ik een API zoeken voor de fight game of gebruik ik de Steam API om de libraries op te halen. Er zal een starpagina nodig zijn
+waar de gebruiker op land als er is ingelogd. Daarna moet er functionaliteit komen die gebruikers aan elkaar link, dan wel voor een 'gevecht' of een chatroom. Voor de fight game
+moet er een damage en aanval systeem komen die damage waarden en aanvallen realtime bij houd en waarbij optioneel nog animaties bij komen. En ik moet de levels van chat rooms of characters
+bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar ik ga me hier eerst maar op focussen.
+
+# Features lijst
+
+- Login systeem
+- Gebruikers koppelen
+- Fight pagina
+- Aanval systeem
+- Character level bijhouden
 
 # :electric_plug: Installatie
 
