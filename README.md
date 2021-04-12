@@ -77,18 +77,18 @@ Voorbeeld van een response van de endpoint moves
         "normal": {
             "use_after": null,
             "use_before": [
-            {
-                "name": "double-slap",
-                "url": "https://pokeapi.co/api/v2/move/3/"
-            },
-            {
-                "name": "slam",
-                "url": "https://pokeapi.co/api/v2/move/21/"
-            },
-            {
-                "name": "feint-attack",
-                "url": "https://pokeapi.co/api/v2/move/185/"
-            }
+                {
+                    "name": "double-slap",
+                    "url": "https://pokeapi.co/api/v2/move/3/"
+                },
+                {
+                    "name": "slam",
+                    "url": "https://pokeapi.co/api/v2/move/21/"
+                },
+                {
+                    "name": "feint-attack",
+                    "url": "https://pokeapi.co/api/v2/move/185/"
+                }
             ]
         },
         "super": {
@@ -117,6 +117,29 @@ Voorbeeld van een response van de endpoint moves
             "url": "https://pokeapi.co/api/v2/language/9/"
         },
             "short_effect": "Inflicts regular damage with no additional effect."
+        }
+    ],
+    "flavor_text_entries": [
+        {
+            "flavor_text": "Pounds with fore­\nlegs or tail.",
+            "language": {
+                "name": "en",
+                "url": "https://pokeapi.co/api/v2/language/9/"
+            },
+            "version_group": {
+            "name": "gold-silver",
+            "url": "https://pokeapi.co/api/v2/version-group/3/"
+            }
+        }
+    ],
+    "learned_by_pokemon": [
+        {
+            "name": "clefairy",
+            "url": "https://pokeapi.co/api/v2/pokemon/35/"
+        },
+        {
+            "name": "jigglypuff",
+            "url": "https://pokeapi.co/api/v2/pokemon/39/"
         }
     ],
     "generation": {
