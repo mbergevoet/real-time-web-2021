@@ -12,6 +12,8 @@
 
 # :flower_playing_cards: Project poster
 
+> TODO
+
 # :computer: Live demo
 
 [Link naar de gedeployde Heroku app](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
