@@ -39,11 +39,39 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 # Features lijst
 
-- Login systeem
 - Gebruikers koppelen
-- Fight pagina
+- Een gevecht met afbeeldingen en buttons
 - Aanval systeem
 - Character level bijhouden
+
+# Dataflow diagram
+
+![diagram](https://i.imgur.com/I11DBpG.png)
+
+# MoSCoW
+
+## Must haves
+
+- Er kunnen twee spelers vechten
+- Er gaat hp af van de tegenstander als je een aanval doet
+- Een aanval kan missen of raken
+- Een speler kan winnen of verliezen
+
+## Should haves
+
+- Een speler kan verschillende vechters kiezen
+- Een matching systeem
+- Level van character word opgeslagen in de database
+- Aanval animaties
+
+## Could haves
+
+- Login systeem
+
+## Will haves but won't this time around
+
+- Coole afbeeldingen voor vechters
+- Een gevecht kunnen joinen met een roomcode
 
 # Schetsen
 
