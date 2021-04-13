@@ -52,6 +52,7 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 ## Must haves
 
+- Moves ophalen uit de PokéApi
 - Er kunnen twee spelers vechten
 - Er gaat hp af van de tegenstander als je een aanval doet
 - Een aanval kan missen of raken
