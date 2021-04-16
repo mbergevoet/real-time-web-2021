@@ -60,26 +60,26 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 ## Must haves
 
 - [x] Moves ophalen uit de PokéApi
-- [] Er kunnen twee spelers vechten
-- [] Er gaat hp af van de tegenstander als je een aanval doet
-- [] Een aanval kan missen of raken
-- [] Een speler kan winnen of verliezen
+- [ ] Er kunnen twee spelers vechten
+- [ ] Er gaat hp af van de tegenstander als je een aanval doet
+- [ ] Een aanval kan missen of raken
+- [ ] Een speler kan winnen of verliezen
 
 ## Should haves
 
-- [] Een speler kan verschillende vechters kiezen
-- [] Een matching systeem
-- [] Level van character word opgeslagen in de database
-- [] Aanval animaties
+- [ ] Een speler kan verschillende vechters kiezen
+- [ ] Een matching systeem
+- [ ] Level van character word opgeslagen in de database
+- [ ] Aanval animaties
 
 ## Could haves
 
-- [] Login systeem
+- [ ] Login systeem
 
 ## Will haves but won't this time around
 
-- [] Coole afbeeldingen voor vechters
-- [] Een gevecht kunnen joinen met een roomcode
+- [ ] Coole afbeeldingen voor vechters
+- [ ] Een gevecht kunnen joinen met een roomcode
 
 # Schetsen
 
