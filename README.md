@@ -14,15 +14,18 @@
 | [Installatie](#Installatie)         | 
 | [License](#License)             |
 
-# :flower_playing_cards: Project poster
+<!-- :flower_playing_cards:  -->
+# Project poster
 
 > TODO
 
-# :computer: Live demo
+<!-- :computer: -->
+# Live demo
 
 [Link naar de gedeployde Heroku app]()
 
-# :bulb: Eindopdracht ideeën
+<!-- :bulb:  -->
+# Eindopdracht ideeën
 
 ## :incoming_envelope: Steam chat app
 
@@ -71,12 +74,12 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 ## Could haves
 
-- Login systeem
+- [] Login systeem
 
 ## Will haves but won't this time around
 
-- Coole afbeeldingen voor vechters
-- Een gevecht kunnen joinen met een roomcode
+- [] Coole afbeeldingen voor vechters
+- [] Een gevecht kunnen joinen met een roomcode
 
 # Schetsen
 
