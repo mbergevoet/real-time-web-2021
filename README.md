@@ -4,8 +4,9 @@
 
 | Inhoudsopgave       |
 | ------------------- |
-| [Project poster](#Project-poster)      |
-| [Eindopdracht ideeën](#Eindopdracht-ideeën ) |
+| [Project poster](#:flower_playing_cards:-Project-poster)      |
+| [Live demo](:computer:-Live-demo)
+| [Eindopdracht ideeën](#:bulb:-Eindopdracht-ideeën ) |
 | [Plan van aanpak](#Plan-van-aanpak)     |
 | [Feature lijst](#Feature-lijst)       |
 | [MoSCoW](#MoSCoW)              |
