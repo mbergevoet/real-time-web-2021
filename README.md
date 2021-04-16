@@ -1,14 +1,17 @@
 # Minor web turn based fighter Game
 
-## Inhoud
+## Klikbare inhoud
 
 | Inhoudsopgave       |
 | ------------------- |
-| Project poster      |
-| Eindopdracht ideeën |
-| Plan van aanpak     |
-| Installatie         | 
-| License             |
+| [Project poster](#Project-poster)      |
+| [Eindopdracht ideeën](#Eindopdracht-ideeën ) |
+| [Plan van aanpak](#Plan-van-aanpak)     |
+| [Feature lijst](#Feature-lijst)       |
+| [MoSCoW](#MoSCoW)              |
+| [API](#API)         |
+| [Installatie](#Installatie)         | 
+| [License](#License)             |
 
 # :flower_playing_cards: Project poster
 
@@ -52,18 +55,18 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 ## Must haves
 
-- Moves ophalen uit de PokéApi
-- Er kunnen twee spelers vechten
-- Er gaat hp af van de tegenstander als je een aanval doet
-- Een aanval kan missen of raken
-- Een speler kan winnen of verliezen
+- [x] Moves ophalen uit de PokéApi
+- [] Er kunnen twee spelers vechten
+- [] Er gaat hp af van de tegenstander als je een aanval doet
+- [] Een aanval kan missen of raken
+- [] Een speler kan winnen of verliezen
 
 ## Should haves
 
-- Een speler kan verschillende vechters kiezen
-- Een matching systeem
-- Level van character word opgeslagen in de database
-- Aanval animaties
+- [] Een speler kan verschillende vechters kiezen
+- [] Een matching systeem
+- [] Level van character word opgeslagen in de database
+- [] Aanval animaties
 
 ## Could haves
 
@@ -97,100 +100,18 @@ voorbeeld van een endpoint met moves
 
 `https://pokeapi.co/api/v2/move/1/`
 
-Voorbeeld van een response van de endpoint moves
+Voorbeeld van een response van de endpoint moves. De echte response heeft nog veel meer values
 
 ```js
 {
     "accuracy": 100,
-    "contest_combos": {
-        "normal": {
-            "use_after": null,
-            "use_before": [
-                {
-                    "name": "double-slap",
-                    "url": "https://pokeapi.co/api/v2/move/3/"
-                },
-                {
-                    "name": "slam",
-                    "url": "https://pokeapi.co/api/v2/move/21/"
-                },
-                {
-                    "name": "feint-attack",
-                    "url": "https://pokeapi.co/api/v2/move/185/"
-                }
-            ]
-        },
-        "super": {
-            "use_after": null,
-            "use_before": null
-        }
-    },
-    "contest_effect": {
-        "url": "https://pokeapi.co/api/v2/contest-effect/1/"
-    },
-    "contest_type": {
-        "name": "tough",
-        "url": "https://pokeapi.co/api/v2/contest-type/5/"
-    },
-    "damage_class": {
-        "name": "physical",
-        "url": "https://pokeapi.co/api/v2/move-damage-class/2/"
-    },
-    "effect_chance": null,
-    "effect_changes": [],
-    "effect_entries": [
-        {
-            "effect": "Inflicts regular damage.",
-            "language": {
-                "name": "en",
-            "url": "https://pokeapi.co/api/v2/language/9/"
-        },
-            "short_effect": "Inflicts regular damage with no additional effect."
-        }
-    ],
-    "flavor_text_entries": [
-        {
-            "flavor_text": "Pounds with fore­\nlegs or tail.",
-            "language": {
-                "name": "en",
-                "url": "https://pokeapi.co/api/v2/language/9/"
-            },
-            "version_group": {
-            "name": "gold-silver",
-            "url": "https://pokeapi.co/api/v2/version-group/3/"
-            }
-        }
-    ],
-    "learned_by_pokemon": [
-        {
-            "name": "clefairy",
-            "url": "https://pokeapi.co/api/v2/pokemon/35/"
-        },
-        {
-            "name": "jigglypuff",
-            "url": "https://pokeapi.co/api/v2/pokemon/39/"
-        }
-    ],
-    "generation": {
-        "name": "generation-i",
-        "url": "https://pokeapi.co/api/v2/generation/1/"
-    },
+    "id": 1,
+    "name": "pound",
     "past_values": [],
     "power": 40,
     "pp": 35,
     "priority": 0,
-    "stat_changes": [],
-    "super_contest_effect": {
-        "url": "https://pokeapi.co/api/v2/super-contest-effect/5/"
-    },
-    "target": {
-        "name": "selected-pokemon",
-        "url": "https://pokeapi.co/api/v2/move-target/10/"
-    },
-    "type": {
-        "name": "normal",
-        "url": "https://pokeapi.co/api/v2/type/1/"
-    }
+    "stat_changes": []
 }
 ```
 
