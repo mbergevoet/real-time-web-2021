@@ -1,4 +1,4 @@
-# Real-Time Web @cmda-minor-web · 2020/21
+# Minor web turn based fighter Game
 
 ## Inhoud
 
@@ -16,7 +16,7 @@
 
 # :computer: Live demo
 
-[Link naar de gedeployde Heroku app](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[Link naar de gedeployde Heroku app]()
 
 # :bulb: Eindopdracht ideeën
 
@@ -46,7 +46,7 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 # Dataflow diagram
 
-![diagram](https://i.imgur.com/I11DBpG.png)
+![diagram](https://i.imgur.com/ptyzbBk.png)
 
 # MoSCoW
 

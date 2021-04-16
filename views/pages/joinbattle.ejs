@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <title>Join battle</title>
+</head>
+
+<body>
+    <section>
+        <form action="joinbattle" method="post">
+            <fieldset>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </fieldset>
+            <fieldset>
+                <label for="create">Create battle</label>
+                <input type="submit" name="create" id="create" value="Create battle">
+            </fieldset>
+            <fieldset>
+                <label for="roomID">Join battle</label>
+                <input type="text" name="battleID" id="battleID" placeholder="Battle id">
+                <input type="submit" name="join" id="join" value="Join battle">
+            </fieldset>
+        </form>
+    </section>
+
+</body>
+
+</html>
