@@ -2,17 +2,18 @@
 
 ## Klikbare inhoud
 
-| Inhoudsopgave       |
-| ------------------- |
-| [Project poster](#Project-poster)      |
-| [Live demo](#Live-demo)
+| Inhoudsopgave                                |
+| -------------------------------------------- |
+| [Project poster](#Project-poster)            |
+| [Live demo](#Live-demo)                      |
 | [Eindopdracht ideeën](#Eindopdracht-ideeën ) |
-| [Plan van aanpak](#Plan-van-aanpak)     |
-| [Feature lijst](#Feature-lijst)       |
-| [MoSCoW](#MoSCoW)              |
-| [API](#API)         |
-| [Installatie](#Installatie)         | 
-| [License](#License)             |
+| [Plan van aanpak](#Plan-van-aanpak)          |
+| [Feature lijst](#Feature-lijst)              |
+| [MoSCoW](#MoSCoW)                            |    
+| [API](#API)                                  |
+| [Installatie](#Installatie)                  | 
+| [npm pakketjes](#npm-pakketjes)              |
+| [License](#License)                          |
 
 <!-- :flower_playing_cards:  -->
 # Project poster
@@ -60,13 +61,14 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 ## Must haves
 
 - [x] Moves ophalen uit de PokéApi
-- [ ] Er kunnen twee spelers vechten
+- [ ] Er kunnen twee spelers in een room 
 - [ ] Er gaat hp af van de tegenstander als je een aanval doet
 - [ ] Een aanval kan missen of raken
 - [ ] Een speler kan winnen of verliezen
 
 ## Should haves
 
+- [ ] Een gevecht kunnen joinen met een roomcode
 - [ ] Een speler kan verschillende vechters kiezen
 - [ ] Een matching systeem
 - [ ] Level van character word opgeslagen in de database
@@ -78,8 +80,7 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 ## Will haves but won't this time around
 
-- [ ] Coole afbeeldingen voor vechters
-- [ ] Een gevecht kunnen joinen met een roomcode
+- [ ] Coole afbeeldingen/sprites voor vechters
 
 # Schetsen
 
@@ -118,8 +119,8 @@ Voorbeeld van een response van de endpoint moves. De echte response heeft nog ve
     "stat_changes": []
 }
 ```
-
-# :electric_plug: Installatie
+ <!-- :electric_plug: -->
+# Installatie
 
 Ga naar de jusite directory:
 
@@ -144,8 +145,28 @@ Als alle dependencies zijn geïnstalleerd:
 ```
 npm run dev
 ```
+# npm pakketjes
 
-## :bookmark_tabs: License
+**[express](https://www.npmjs.com/package/express)** ![npm version](https://img.shields.io/npm/v/express.svg)<br>
+Fast, unopinionated, minimalist web framework for node.
+
+**[nodemon](https://www.npmjs.com/package/nodemon)** ![npm version](https://camo.githubusercontent.com/7d7dcc8440368062ac5d89541a5fe154a375548ecb242badc7e01c4618566204/68747470733a2f2f62616467652e667572792e696f2f6a732f6e6f64656d6f6e2e737667)<br>
+nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+
+**[socket.io](https://www.npmjs.com/package/socket.io)** ![npm version](https://camo.githubusercontent.com/edfde2e9382e2a523f45160d7390aa6a09de12c26ad9d3da0dff71f368e81297/68747470733a2f2f62616467652e667572792e696f2f6a732f736f636b65742e696f2e737667)<br>
+Socket.IO enables real-time bidirectional event-based communication.
+
+**[node-fetch](https://www.npmjs.com/package/node-fetch)** ![npm version](https://flat.badgen.net/npm/v/node-fetch)<br>
+This light-weight module brings `window.fetch` to Node.js.
+
+**[ejs](https://www.npmjs.com/package/ejs)** ![npm version](https://camo.githubusercontent.com/b87295b05c6caa5501d94643be07f827db9b217273312b133c870dcba76a91d3/68747470733a2f2f696d672e736869656c64732e696f2f7472617669732f6d64652f656a732f6d61737465722e7376673f7374796c653d666c6174)<br>
+Embedded JavaScript templating.
+
+**[dotenv](https://www.npmjs.com/package/dotenv)** ![npm version](https://img.shields.io/npm/v/dotenv.svg?style=flat-square)<br>
+Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`.
+
+<!-- :bookmark_tabs: -->
+# License
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 

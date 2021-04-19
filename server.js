@@ -19,7 +19,7 @@ const endpoints = [
 // pound 100, double slap 85, vice-grip 100, slam 75, stomp 100, double-kick 75, tackle 100, take-down 85, bite 100 healing pulse
 
 // Rooms logic inpired by Max Hauser
-class User {
+class Player {
     constructor(name, hitpoints) {
         this.name = name;
         this.hitpoints = hitpoints
@@ -52,7 +52,7 @@ app
             // Maak nieuwe room aan
             const battleID = (Math.random() * 100000) | 0;
             const battle = new Battle(battleID, []);
-            console.log(battle)
+            // console.log("regel 55", battle)
             battles.push(battle);
             res.redirect(`/battle?battleid=${battleID}&username=${req.body.username}`)
         } else {
@@ -64,46 +64,50 @@ app
     .get('/battle', (req, res) => {
         fetchMoves(endpoints)
             .then((data) => {
-                console.log("Data:", data)
+                // console.log("Data:", data)
                 res.render('pages/battle', { moves: data })
             })
     })
 
-io
-    .on('connection', (socket) => {
-        console.log('A user has connected')
+io.sockets.on('connection', (socket) => {
+    console.log('A user has connected')
 
-        let battleid, username;
+    let battleid, username;
 
-        socket.on("newUser", (data) => {
-            socket.name = data.username
-            socket.battle = data.battleID
-            battleid = data.battleID;
-            username = data.username;
-            socket.join(data.battleID);
+    socket.on("newBattle", (data) => {
+        console.log(data)
+    })
 
-            battles.forEach((battle) => {
-                if (battle.id == data.battleID) {
-                    const player = new User(data.username, data.hitpoints);
-                    battle.players.push(player);
+    socket.on("newUser", (data) => {
+        console.log(data)
+        socket.name = data.username
+        socket.battle = data.battleID
+        battleid = data.battleID;
+        username = data.username;
+        socket.join(data.battleID);
 
-                    io.to(battleid).emit('updateBattleInfo', battle)
-                }
-            })
-        })
-
-        // socket.on('attack', (attack) => {
-        //     socket.emit('attack', attack)
-        // })
-
-        socket.on('disconnect', () => {
-            console.log('A user has disconnected')
-            const currentBattle = rooms.filter((battle) => battle.id == socket.battle);
-            if (currentBattle.length == 0) return;
-            const updateList = removeFromUserlist(currentBattle[0], socket.name);
-            io.to(`${currentBattle[0].id}`).emit('updateBattleInfo', updateList);
+        battles.forEach((battle) => {
+            if (battle.id == data.battleID) {
+                const player = new Player(data.username, 100);
+                Battle.players.push(player);
+                console.log(Battle.players)
+                io.to(battleid).emit('updateBattleInfo', battle)
+            }
         })
     })
+
+    // socket.on('attack', (attack) => {
+    //     socket.emit('attack', attack)
+    // })
+
+    socket.on('disconnect', () => {
+        console.log('A user has disconnected')
+        const currentBattle = battles.filter((battle) => battle.id == socket.battle);
+        if (currentBattle.length == 0) return;
+        const updateList = removeFromUserlist(currentBattle[0], socket.name);
+        io.to(`${currentBattle[0].id}`).emit('updateBattleInfo', updateList);
+    })
+})
 
 function removeFromUserlist(battle, name) {
     if (!battle) { return; }

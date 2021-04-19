@@ -1,10 +1,13 @@
 export function addPlayer(activePlayers) {
 
-    const board = document.querySelector("#players");
-    board.innerHTML = "";
+    const playerOne = document.querySelector("#playerOne");
+    const playerTwo = document.querySelector("#playerTwo");
+    playerOne.innerHTML = "";
+    playerTwo.innerHTML = "";
 
-    activePlayers.forEach(user => {
-        const newUser = `<li>${user.name}</li>`;
-        board.insertAdjacentHTML('beforeend', newUser);
-    });
+    console.log("player: ", activePlayers[0].name)
+
+    // const newUser = `<span>${user[1].name}<span>`;
+    const newUser = `<span>${activePlayers[0].name}<span>`;
+    playerOne.appendChild(newUser);
 }

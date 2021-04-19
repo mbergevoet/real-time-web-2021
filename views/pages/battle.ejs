@@ -5,30 +5,27 @@
     <%- include('../partials/head') %>
         <title>Fight!</title>
 </head>
-<% console.log("moves: ", moves) %>
 
-    <body>
-        <header>
-            <h1>Fighting Ring</h1>
-        </header>
-        <main>
-            <ul id=" players">
-    </ul>
-    <section>
-        <h1>NAME 1</h1>
-        <h1>HP: 100</h1>
-    </section>
-    <section>
-        <h1>NAME 2</h1>
-        <h1>HP: 100</h1>
-    </section>
-    <section>
-        <%- include('../partials/attackButtons') %>
-    </section>
+<body>
+    <header>
+        <h1>Fighting Ring</h1>
+    </header>
+    <main>
+        <section>
+            <p id="playerOne"></p>
+            <p id="hpOne">HP:</p>
+        </section>
+        <section>
+            <p id="playerTwo"></p>
+            <p id="hpTwo">HP: </p>
+        </section>
+        <section>
+            <%- include('../partials/attackButtons') %>
+        </section>
     </main>
     <script src=" /socket.io/socket.io.js">
     </script>
     <script type="module" src="/scripts/script.js"></script>
-    </body>
+</body>
 
 </html>
