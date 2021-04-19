@@ -23,13 +23,15 @@ class Player {
     constructor(name, hitpoints) {
         this.name = name;
         this.hitpoints = hitpoints
+        this.hasTurn = false
     }
 }
 
 class Battle {
-    constructor(id, players) {
+    constructor(id, players, hasTurn) {
         this.id = id;
         this.players = players
+        this.hasTurn = hasTurn
     }
 }
 
@@ -52,8 +54,7 @@ app
             // Maak nieuwe room aan
             const battleID = (Math.random() * 100000) | 0;
             const battle = new Battle(battleID, []);
-            // console.log("regel 55", battle)
-            battles.push(battle);
+            battles.push(battle)
             res.redirect(`/battle?battleid=${battleID}&username=${req.body.username}`)
         } else {
             // Join bestaande room
@@ -72,48 +73,41 @@ app
 io.sockets.on('connection', (socket) => {
     console.log('A user has connected')
 
-    let battleid, username;
-
-    socket.on("newBattle", (data) => {
+    socket.on('newUser', (data) => {
+        socket.join(data.battleID)
+        const player = new Player(data.username, 150, false)
         console.log(data)
-    })
-
-    socket.on("newUser", (data) => {
-        console.log(data)
-        socket.name = data.username
-        socket.battle = data.battleID
-        battleid = data.battleID;
-        username = data.username;
-        socket.join(data.battleID);
-
         battles.forEach((battle) => {
-            if (battle.id == data.battleID) {
-                const player = new Player(data.username, 100);
-                Battle.players.push(player);
-                console.log(Battle.players)
-                io.to(battleid).emit('updateBattleInfo', battle)
+            // battleID is from player, battle.id is from class
+            if (data.battleID == battle.id) {
+                battle.players.push(player)
+                console.log(battle.players)
+                // battles.players[0].hasTurn = true
+                io.to(data.battleID).emit('updateBattleInfo', battle)
+                io.to(data.battleID).emit('updateTurnInfo',)
             }
         })
+        console.log(battles)
     })
 
-    // socket.on('attack', (attack) => {
-    //     socket.emit('attack', attack)
-    // })
+    socket.on('attack', (data) => {
+        console.log(data)
+        // const damage = 20
+        // if (data.username === battles.players[0].name) {
+        //     battles.players[0].hasTurn = false
+        //     battles.players[1].hasTurn = true
+        // } else if (data.username === battles.players[1].name) {
+        //     battles.players[0].hasTurn = true
+        //     battles.players[1].hitpoints - damage
+        // }
+        // io.to(data.battleID).emit('updateBattleInfo', battle)
+        // socket.emit('attack', attack)
+    })
 
     socket.on('disconnect', () => {
         console.log('A user has disconnected')
-        const currentBattle = battles.filter((battle) => battle.id == socket.battle);
-        if (currentBattle.length == 0) return;
-        const updateList = removeFromUserlist(currentBattle[0], socket.name);
-        io.to(`${currentBattle[0].id}`).emit('updateBattleInfo', updateList);
     })
 })
-
-function removeFromUserlist(battle, name) {
-    if (!battle) { return; }
-    const updatedList = battle.players.filter((user) => user.name !== name);
-    return updatedList;
-}
 
 http.listen(port, function () {
     console.log(`Server listening at http://localhost:${port}`)

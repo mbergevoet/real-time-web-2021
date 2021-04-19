@@ -1,40 +1,47 @@
-// const socket = io()
-// const moveOne = document.querySelector("moveOne")
+
 // const moveTwo = document.querySelector("moveTwo")
 // const moveThree = document.querySelector("moveThree")
 // const moveFour = document.querySelector("moveFour")
 
-// moveOne.addEventListener("click", (event) => {
-
-//     socket.emit('move')
-// })
-
-// import { addPlayer } from "./player.js";
-
 const socket = io()
-
-// const test = "ik ben een test"
-
-// socket.emit("newUser", (test))
-
-// console.log(socket)
-
+const attackButton = document.querySelector(".attack")
 const url = new URL(window.location.href);
 const battleID = url.searchParams.get('battleid');
 const username = url.searchParams.get('username');
 
-const activePlayers = { battleID, username }
+const activePlayer = { battleID, username }
 
-socket.on('connection', () => {
-
-    socket.emit("newBattle", (activePlayers))
-
-    socket.on("updateUserList", (list) => {
-        addPlayer(list)
-    })
-
-    socket.on("updateBattleInfo", (battle) => {
-        console.log(battle)
-        addPlayer(battle.players)
-    })
+socket.on('connect', () => {
+    if (battleID) {
+        socket.emit('newUser', activePlayer)
+    }
 })
+
+socket.on("updateBattleInfo", (battle) => {
+    console.log("show players ", battle.players)
+    addPlayer(battle.players)
+})
+
+// attackButton.addEventListener('click', (activePlayer) => {
+//     console.log('click!')
+//     socket.emit("attack", activePlayer)
+
+// })
+
+function addPlayer(activePlayer) {
+    const playerOne = document.querySelector("#playerOne");
+    const playerTwo = document.querySelector("#playerTwo");
+    const hpOne = document.querySelector("#hpOne");
+    const hpTwo = document.querySelector("#hpTwo");
+    playerOne.innerText = activePlayer[0].name
+    hpOne.innerText = activePlayer[0].hitpoints
+    if (activePlayer.length === 2) {
+        playerTwo.innerText = activePlayer[1].name
+        hpTwo.innerText = activePlayer[1].hitpoints
+    }
+}
+
+// socket.on("updateBattleInfo", (battle) => {
+//     console.log(battle)
+//     addPlayer(battle.players)
+// })
