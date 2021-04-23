@@ -11,17 +11,19 @@
         <h1>Fighting Ring</h1>
     </header>
     <main>
-        <h1 id="turnMessage"></h1>
-        <section>
-            <p id="playerOne"></p>
-            <p id="hpOne">HP:</p>
-        </section>
-        <section>
-            <p id="playerTwo"></p>
-            <p id="hpTwo">HP: </p>
-        </section>
-        <section>
-            <%- include('../partials/attackButtons') %>
+        <section id="battle">
+            <h1>Battle <span id="battleId"></span></h1>
+            <section>
+                <p id="playerOne"></p>
+                <p>HP: <span id="hpOne"></span></p>
+            </section>
+            <section>
+                <p id="playerTwo"></p>
+                <p>HP: <span id="hpTwo"></span></p>
+            </section>
+            <section>
+                <%- include('../partials/attackButtons') %>
+            </section>
         </section>
     </main>
     <script src=" /socket.io/socket.io.js">

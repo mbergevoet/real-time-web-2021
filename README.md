@@ -61,21 +61,21 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 ## Must haves
 
 - [x] Moves ophalen uit de PokéApi
-- [ ] Er kunnen twee spelers in een room 
+- [x] Er kunnen twee spelers in een room 
+- [x] Een gevecht kunnen joinen met een roomcode
 - [ ] Er gaat hp af van de tegenstander als je een aanval doet
-- [ ] Een aanval kan missen of raken
 - [ ] Een speler kan winnen of verliezen
 
 ## Should haves
 
-- [ ] Een gevecht kunnen joinen met een roomcode
+- [ ] Een aanval kan missen of raken
 - [ ] Een speler kan verschillende vechters kiezen
-- [ ] Een matching systeem
 - [ ] Level van character word opgeslagen in de database
-- [ ] Aanval animaties
 
 ## Could haves
 
+- [ ] Fighter sprites
+- [ ] Aanval animaties
 - [ ] Login systeem
 
 ## Will haves but won't this time around

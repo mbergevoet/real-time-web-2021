@@ -9,21 +9,21 @@ const { join } = require('path')
 const { fetchMoves } = require('./public/scripts/fetch.js')
 // const moveEndpoint = "https://pokeapi.co/api/v2/move/"
 // const moves = ["1/", "3/", "11/", "21/", "23/", "25/", "33/", "36/", "44/", "505/",]
+// pound 100, double slap 85, vice-grip 100, slam 75, stomp 100, double-kick 75, tackle 100, take-down 85, bite 100 healing pulse
 
 const endpoints = [
-    "https://pokeapi.co/api/v2/move/1/",
-    "https://pokeapi.co/api/v2/move/21/",
-    "https://pokeapi.co/api/v2/move/25",
-    "https://pokeapi.co/api/v2/move/505/",
+    "https://pokeapi.co/api/v2/move/21/"
+    // "https://pokeapi.co/api/v2/move/21/",
+    // "https://pokeapi.co/api/v2/move/25",
+    // "https://pokeapi.co/api/v2/move/505/",
 ]
-// pound 100, double slap 85, vice-grip 100, slam 75, stomp 100, double-kick 75, tackle 100, take-down 85, bite 100 healing pulse
 
 // Rooms logic inpired by Max Hauser
 class Player {
-    constructor(name, hitpoints) {
-        this.name = name;
+    constructor(id, name, hitpoints) {
+        this.id = id
+        this.name = name
         this.hitpoints = hitpoints
-        this.hasTurn = false
     }
 }
 
@@ -35,7 +35,6 @@ class Battle {
     }
 }
 
-let battleID;
 const battles = [];
 
 app
@@ -53,7 +52,7 @@ app
         if (req.body.battleID.length == 0) {
             // Maak nieuwe room aan
             const battleID = (Math.random() * 100000) | 0;
-            const battle = new Battle(battleID, []);
+            const battle = new Battle(battleID, [], "");
             battles.push(battle)
             res.redirect(`/battle?battleid=${battleID}&username=${req.body.username}`)
         } else {
@@ -75,22 +74,43 @@ io.sockets.on('connection', (socket) => {
 
     socket.on('newUser', (data) => {
         socket.join(data.battleID)
-        const player = new Player(data.username, 150, false)
+        const player = new Player(socket.id, data.username, 150)
         console.log(data)
         battles.forEach((battle) => {
             // battleID is from player, battle.id is from class
             if (data.battleID == battle.id) {
                 battle.players.push(player)
                 console.log(battle.players)
-                // battles.players[0].hasTurn = true
                 io.to(data.battleID).emit('updateBattleInfo', battle)
-                io.to(data.battleID).emit('updateTurnInfo',)
+                // io.to(data.battleID).emit('updateTurnInfo',)
+                if (battle.players.length === 1) {
+                    battle.hasTurn = player.id
+                }
             }
         })
         console.log(battles)
     })
 
+    // battles = [ Battle { id = 1, players = [ Player { id = '1A', name = 'Jan', hitpoints = 150}, Player { id = '2B', name = 'Piet', hitpoints = 150} ], hasTurn = 1A } ]
+
     socket.on('attack', (data) => {
+        battles.forEach((battle) => {
+            if (battle.id == data.battleID)
+                battle.players.forEach((player) => {
+                    const damage = 20
+                    if (battle.hasTurn == player.id) {
+                        battle.players.forEach((player) => {
+                            if (battle.hasTurn !== player.id) {
+                                player.hitpoints = player.hitpoints - damage
+                            }
+                        })
+                    } else if (battle.hasTurn !== player.id) {
+                        console.log("regel 104 ", battle)
+                        battle.hasTurn = player.id
+                        io.to(data.battleID).emit('updateBattleInfo', battle)
+                    }
+                })
+        })
         console.log(data)
         // const damage = 20
         // if (data.username === battles.players[0].name) {

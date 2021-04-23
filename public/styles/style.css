@@ -39,4 +39,54 @@ table {
 html {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
+	background: #3F4EA6;
+}
+
+label {
+	display: block;
+}
+
+fieldset {
+	padding-bottom: 1em;
+}
+
+input {
+
+}
+
+#joinform {
+	margin: 10% auto;
+	padding: 2em;
+	width: 300px;
+	height: auto;
+	background: #ffffff;
+	border-radius: 20px;
+}
+
+#joinform h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding-bottom: 1em;
+}
+
+#joinform input[type='submit'],
+button {
+	border: 1px solid #000000;
+	border-radius: 20px;
+	padding: 5px;
+	background: #ffffff;
+}
+
+#joinform input[type='submit']:hover,
+button:hover {
+	cursor: pointer;
+}
+
+#battle {
+	margin: 10% auto;
+	padding: 2em;
+	width: 300px;
+	height: auto;
+	background: #ffffff;
+	border-radius: 20px;
 }

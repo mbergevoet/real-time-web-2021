@@ -6,8 +6,8 @@
 const socket = io()
 const attackButton = document.querySelector(".attack")
 const url = new URL(window.location.href);
-const battleID = url.searchParams.get('battleid');
-const username = url.searchParams.get('username');
+const battleID = url.searchParams.get('battleid')
+const username = url.searchParams.get('username')
 
 const activePlayer = { battleID, username }
 
@@ -17,22 +17,21 @@ socket.on('connect', () => {
     }
 })
 
-socket.on("updateBattleInfo", (battle) => {
-    console.log("show players ", battle.players)
+socket.on('updateBattleInfo', (battle) => {
+    console.log('show players ', battle.players)
     addPlayer(battle.players)
 })
 
-// attackButton.addEventListener('click', (activePlayer) => {
-//     console.log('click!')
-//     socket.emit("attack", activePlayer)
-
-// })
+attackButton.addEventListener('click', () => {
+    console.log('click!')
+    socket.emit('attack', activePlayer)
+})
 
 function addPlayer(activePlayer) {
-    const playerOne = document.querySelector("#playerOne");
-    const playerTwo = document.querySelector("#playerTwo");
-    const hpOne = document.querySelector("#hpOne");
-    const hpTwo = document.querySelector("#hpTwo");
+    const playerOne = document.querySelector('#playerOne')
+    const playerTwo = document.querySelector('#playerTwo')
+    const hpOne = document.querySelector('#hpOne')
+    const hpTwo = document.querySelector('#hpTwo')
     playerOne.innerText = activePlayer[0].name
     hpOne.innerText = activePlayer[0].hitpoints
     if (activePlayer.length === 2) {
