@@ -69,22 +69,25 @@ app
             })
     })
 
+
 io.sockets.on('connection', (socket) => {
     console.log('A user has connected')
 
     socket.on('newUser', (data) => {
-        socket.join(data.battleID)
-        const player = new Player(socket.id, data.username, 150)
+        const player = new Player(socket.id, data.username, 30)
         console.log(data)
+        socket.join(data.battleID)
         battles.forEach((battle) => {
             // battleID is from player, battle.id is from class
             if (data.battleID == battle.id) {
                 battle.players.push(player)
-                console.log(battle.players)
-                io.to(data.battleID).emit('updateBattleInfo', battle)
-                // io.to(data.battleID).emit('updateTurnInfo',)
+                console.log('line 83', battle)
                 if (battle.players.length === 1) {
                     battle.hasTurn = player.id
+                    console.log('line 88', battle)
+                    io.to(data.battleID).emit('updateBattleInfo', battle)
+                } else {
+                    io.to(data.battleID).emit('updateBattleInfo', battle)
                 }
             }
         })
@@ -94,34 +97,45 @@ io.sockets.on('connection', (socket) => {
     // battles = [ Battle { id = 1, players = [ Player { id = '1A', name = 'Jan', hitpoints = 150}, Player { id = '2B', name = 'Piet', hitpoints = 150} ], hasTurn = 1A } ]
 
     socket.on('attack', (data) => {
-        battles.forEach((battle) => {
-            if (battle.id == data.battleID)
-                battle.players.forEach((player) => {
-                    const damage = 20
-                    if (battle.hasTurn == player.id) {
-                        battle.players.forEach((player) => {
-                            if (battle.hasTurn !== player.id) {
-                                player.hitpoints = player.hitpoints - damage
-                            }
-                        })
-                    } else if (battle.hasTurn !== player.id) {
-                        console.log("regel 104 ", battle)
-                        battle.hasTurn = player.id
-                        io.to(data.battleID).emit('updateBattleInfo', battle)
-                    }
-                })
-        })
+        // battles.forEach((battle) => {
+        // Check which battle
+        const damage = 30
+        const currentBattle = battles.filter((battle) => battle.id == data.battleID)[0]
+        const attacker = currentBattle.players.filter((player) => player.id == currentBattle.hasTurn)[0]
+        console.log("Welke speler heeft de beurt ", currentBattle.hasTurn)
+        if (currentBattle.hasTurn == attacker.id) {
+            console.log("heeft beurt ", attacker.name)
+            // Check player who doesn't have turn
+            let enemy = currentBattle.players.filter((player) => player.id !== currentBattle.hasTurn)[0]
+            console.log("heeft niet de beurt ", enemy.name)
+            // Damage enemy
+            enemy.hitpoints = enemy.hitpoints - damage
+            // Update turn
+            currentBattle.hasTurn = enemy.id
+            // Kijk welke player over een komt met enemy
+            let playerIsEnemy = currentBattle.players.filter((player) => player.id == enemy.id)[0]
+            console.log("124 ", playerIsEnemy)
+            // Vergelijk id met id in Battle
+            // Pushen in player array
+            playerIsEnemy = enemy
+            console.log(currentBattle)
+            io.to(data.battleID).emit('updateBattleInfo', currentBattle)
+        }
         console.log(data)
-        // const damage = 20
-        // if (data.username === battles.players[0].name) {
-        //     battles.players[0].hasTurn = false
-        //     battles.players[1].hasTurn = true
-        // } else if (data.username === battles.players[1].name) {
-        //     battles.players[0].hasTurn = true
-        //     battles.players[1].hitpoints - damage
-        // }
-        // io.to(data.battleID).emit('updateBattleInfo', battle)
-        // socket.emit('attack', attack)
+    })
+
+    socket.on('checkHitpoints', (data) => {
+        const currentBattle = battles.filter((battle) => battle.id == data.battleID)[0]
+        currentBattle.players.forEach((player) => {
+            console.log(player.hitpoints)
+            if (player.hitpoints <= 0) {
+                // console.log(player.name, player.id, "verliest")
+                app.get('/endbattle', (req, res) => {
+                    res.render('pages/endbattle', { battle: currentBattle })
+                })
+                io.to(data.battleID).emit('end', currentBattle)
+            }
+        })
     })
 
     socket.on('disconnect', () => {

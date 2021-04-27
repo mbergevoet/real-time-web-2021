@@ -36,10 +36,55 @@ table {
 
 /* Reset styles end */
 
+:root{
+	--seablue: #3F4EA6;
+	--grassgreen: #78BBAA;
+	--treegreen: #388830;
+	--lightred: #ffe0e0;
+	--roofblue: #4870A8;
+	--roofred: #C84050;
+}
+
 html {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
-	background: #3F4EA6;
+	background: var(--seablue);
+}
+
+header {
+	background: white;
+	padding: 1em;
+}
+
+header h1 {
+	color: var(--seablue);
+	font-family: 'Faster One', cursive;
+	font-size: 2.5em;
+}
+
+main {
+	height: 75vh;
+}
+
+main > section {
+	margin: 10% auto;
+	padding: 2em;
+	width: 500px;
+	height: auto;
+	background: white;
+	border-radius: 20px;
+}
+
+footer {
+	background:white;
+	padding: 0.8em;
+	display: flex;
+	justify-content: center;
+}
+
+footer p {
+	color: gray;
+	font-size: 0.8em;
 }
 
 label {
@@ -51,16 +96,11 @@ fieldset {
 }
 
 input {
-
-}
-
-#joinform {
-	margin: 10% auto;
-	padding: 2em;
-	width: 300px;
-	height: auto;
-	background: #ffffff;
-	border-radius: 20px;
+	margin-top: 0.5em;
+	padding: 5px;
+	font-size: 1em;
+	border: 1.5px solid black;
+	border-radius: 5px;
 }
 
 #joinform h1 {
@@ -69,24 +109,98 @@ input {
 	padding-bottom: 1em;
 }
 
-#joinform input[type='submit'],
-button {
-	border: 1px solid #000000;
-	border-radius: 20px;
+#joinform input[type='submit'], #backButton {
+	font-weight: bold;
+	border: 2px solid #000000;
+	border-radius: 10px;
 	padding: 5px;
-	background: #ffffff;
+	background: #d4daff;
+}
+
+#backButton {
+	margin-top: 2em;
 }
 
 #joinform input[type='submit']:hover,
-button:hover {
+#backButton:hover {
 	cursor: pointer;
 }
 
-#battle {
-	margin: 10% auto;
-	padding: 2em;
-	width: 300px;
-	height: auto;
-	background: #ffffff;
-	border-radius: 20px;
+#battle h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#battle > p:nth-child(2) {
+	margin: 0.5em 0;
+	width: 100%;
+	background: var(--lightred);
+}
+
+#battle > section:nth-child(3) {
+	position: relative;
+	background: var(--grassgreen);
+	height: 150px;
+}
+
+#battle > section:nth-child(3) div:nth-child(1) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1em;
+}
+
+#battle > section:nth-child(3) div:nth-child(1) p:nth-child(1) {
+	color: var(--roofred) ;
+}
+
+#battle > section:nth-child(3) div:nth-child(2) {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 1em;
+}
+
+#battle > section:nth-child(3) div:nth-child(2) p:nth-child(1) {
+	color: var(--roofblue);
+}
+
+#hasTurn {
+	font-weight: bold;
+}
+
+#attacks {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid black;
+	border-radius: 0 0 4px 4px;
+	padding: 0.5em;
+}
+
+#attacks p {
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+#attackButton {
+	font-family: 'Press Start 2P', cursive;
+	background: none;
+	padding: 5px;
+}
+
+#attackButton:hover{
+	cursor: pointer;
+}
+
+#end {
+	font-size: 1.5em;
+}
+
+#win {
+	color: var(--treegreen);
+}
+
+#loss {
+	color: var(--roofred);
 }

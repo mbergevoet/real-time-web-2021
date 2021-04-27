@@ -1,15 +1,10 @@
-
-// const moveTwo = document.querySelector("moveTwo")
-// const moveThree = document.querySelector("moveThree")
-// const moveFour = document.querySelector("moveFour")
-
 const socket = io()
-const attackButton = document.querySelector(".attack")
-const url = new URL(window.location.href);
+const url = new URL(window.location.href)
 const battleID = url.searchParams.get('battleid')
 const username = url.searchParams.get('username')
-
 const activePlayer = { battleID, username }
+const attackButton = document.querySelector('#attackButton')
+const backButton = document.querySelector('#backButton')
 
 socket.on('connect', () => {
     if (battleID) {
@@ -18,29 +13,49 @@ socket.on('connect', () => {
 })
 
 socket.on('updateBattleInfo', (battle) => {
-    console.log('show players ', battle.players)
+    // console.log('show players ', battle.players[0].id)
+    console.log('battle info', battle)
     addPlayer(battle.players)
+    const currentTurn = battle.players.filter((player) => player.id == battle.hasTurn)[0]
+    // console.log(currentTurn)
+    hasTurn(currentTurn.name, battle.id)
 })
 
-attackButton.addEventListener('click', () => {
-    console.log('click!')
-    socket.emit('attack', activePlayer)
+socket.on('end', () => {
+    window.location = "/endbattle"
 })
 
-function addPlayer(activePlayer) {
-    const playerOne = document.querySelector('#playerOne')
-    const playerTwo = document.querySelector('#playerTwo')
-    const hpOne = document.querySelector('#hpOne')
-    const hpTwo = document.querySelector('#hpTwo')
-    playerOne.innerText = activePlayer[0].name
-    hpOne.innerText = activePlayer[0].hitpoints
-    if (activePlayer.length === 2) {
-        playerTwo.innerText = activePlayer[1].name
-        hpTwo.innerText = activePlayer[1].hitpoints
-    }
+if (attackButton) {
+    attackButton.addEventListener('click', (event) => {
+        // console.log(activePlayer, 'doet aanval')
+        socket.emit('attack', activePlayer)
+        socket.emit('checkHitpoints', activePlayer)
+    })
 }
 
-// socket.on("updateBattleInfo", (battle) => {
-//     console.log(battle)
-//     addPlayer(battle.players)
-// })
+if (backButton) {
+    backButton.addEventListener('click', (event) => {
+        console.log('click!')
+        window.location = "/joinbattle"
+    })
+}
+
+function hasTurn(playerName, battleId) {
+    const hasTurn = document.querySelector('#hasTurn')
+    const roomId = document.querySelector('#battleId')
+    hasTurn.innerText = playerName
+    roomId.innerText = battleId
+}
+
+function addPlayer(players) {
+    const playerOne = document.querySelector('#playerOne')
+    const hpOne = document.querySelector('#hpOne')
+    playerOne.innerText = players[0].name
+    hpOne.innerText = players[0].hitpoints
+    if (players.length === 2) {
+        const playerTwo = document.querySelector('#playerTwo')
+        const hpTwo = document.querySelector('#hpTwo')
+        playerTwo.innerText = players[1].name
+        hpTwo.innerText = players[1].hitpoints
+    }
+}

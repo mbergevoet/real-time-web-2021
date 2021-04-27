@@ -8,24 +8,33 @@
 
 <body>
     <header>
-        <h1>Fighting Ring</h1>
+        <%- include('../partials/header') %>
     </header>
     <main>
         <section id="battle">
             <h1>Battle <span id="battleId"></span></h1>
+            <p><span id="hasTurn"></span> heeft de beurt</p>
             <section>
-                <p id="playerOne"></p>
-                <p>HP: <span id="hpOne"></span></p>
+                <div>
+                    <p id="playerOne"></p>
+                    <p>HP: <span id="hpOne"></span></p>
+                </div>
+                <div>
+                    <p id="playerTwo"></p>
+                    <p>HP: <span id="hpTwo"></span></p>
+                </div>
             </section>
-            <section>
-                <p id="playerTwo"></p>
-                <p>HP: <span id="hpTwo"></span></p>
-            </section>
-            <section>
-                <%- include('../partials/attackButtons') %>
+            <section id="attacks">
+                <p>></p>
+                <button id="attackButton">
+                    <%= moves[0].name %>
+                </button>
             </section>
         </section>
     </main>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
     <script src=" /socket.io/socket.io.js">
     </script>
     <script type="module" src="/scripts/script.js"></script>

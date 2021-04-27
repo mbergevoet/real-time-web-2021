@@ -18,12 +18,19 @@
 <!-- :flower_playing_cards:  -->
 # Project poster
 
-> TODO
+## Maak een battle
+![Create battle](https://i.imgur.com/DJX4q2T.png)
+## Join een battle met battle id
+![Join battle](https://i.imgur.com/Ozc9H95.png)
+## Val je tegenstander aan om de beurt
+![Attack and take turns](https://i.imgur.com/69JVH1B.png)
+# Win of verlies het spel
+![Win or lose](https://i.imgur.com/uk6LG57.png)
 
 <!-- :computer: -->
 # Live demo
 
-[Link naar de gedeployde Heroku app]()
+[Link naar de gedeployde Heroku app](https://minor-web-dev-fighter.herokuapp.com/)
 
 <!-- :bulb:  -->
 # Eindopdracht ideeën
@@ -54,7 +61,7 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 
 # Dataflow diagram
 
-![diagram](https://i.imgur.com/ptyzbBk.png)
+![diagram](https://i.imgur.com/R75JiZc.png)
 
 # MoSCoW
 
@@ -63,8 +70,8 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 - [x] Moves ophalen uit de PokéApi
 - [x] Er kunnen twee spelers in een room 
 - [x] Een gevecht kunnen joinen met een roomcode
-- [ ] Er gaat hp af van de tegenstander als je een aanval doet
-- [ ] Een speler kan winnen of verliezen
+- [x] Er gaat hp af van de tegenstander als je een aanval doet
+- [x] Een speler kan winnen of verliezen
 
 ## Should haves
 
@@ -75,12 +82,11 @@ bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar
 ## Could haves
 
 - [ ] Fighter sprites
-- [ ] Aanval animaties
 - [ ] Login systeem
 
 ## Will haves but won't this time around
 
-- [ ] Coole afbeeldingen/sprites voor vechters
+- [ ] Aanval animaties
 
 # Schetsen
 

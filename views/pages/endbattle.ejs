@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <title>End of battle</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <section id="end">
+            <% battle.players.forEach((player)=>{ %>
+                <% if(player.hitpoints <=0){ %>
+                    <p id="loss">
+                        &#9746 <%=player.name%> lost :(
+                    </p>
+                    <% } else { %>
+                        <p id="win">
+                            &#9745 <%=player.name%> won!
+                        </p>
+                        <% } %>
+                            <% }) %>
+                                <button id="backButton">New battle</button>
+        </section>
+    </main>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+    <script src=" /socket.io/socket.io.js">
+    </script>
+    <script type="module" src="/scripts/script.js"></script>
+</body>
+
+</html>
