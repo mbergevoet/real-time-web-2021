@@ -74,7 +74,7 @@ io.sockets.on('connection', (socket) => {
     console.log('A user has connected')
 
     socket.on('newUser', (data) => {
-        const player = new Player(socket.id, data.username, 30)
+        const player = new Player(socket.id, data.username, 150)
         // console.log(data)
         socket.join(data.battleID)
         battles.forEach((battle) => {
