@@ -1,22 +1,23 @@
-# Minor web turn based fighter Game
+# Minor Web Dev Fighter
 
 ## Klikbare inhoud
 
 | Inhoudsopgave                                |
 | -------------------------------------------- |
-| [Project poster](#Project-poster)            |
+| [Minor Web Dev Fighter screenshots](#Minor-Web-Dev-Fighter-screenshots)            |
 | [Live demo](#Live-demo)                      |
-| [Eindopdracht ideeën](#Eindopdracht-ideeën ) |
-| [Plan van aanpak](#Plan-van-aanpak)          |
+| [Concept](#Concept)                          |
 | [Feature lijst](#Feature-lijst)              |
 | [MoSCoW](#MoSCoW)                            |    
 | [API](#API)                                  |
 | [Installatie](#Installatie)                  | 
 | [npm pakketjes](#npm-pakketjes)              |
+| [Eindopdracht ideeën](#Eindopdracht-ideeën ) |
+| [Plan van aanpak](#Plan-van-aanpak)          |
 | [License](#License)                          |
 
 <!-- :flower_playing_cards:  -->
-# Project poster
+# Minor Web Dev Fighter screenshots
 
 ## Maak een battle
 ![Create battle](https://i.imgur.com/DJX4q2T.png)
@@ -32,25 +33,11 @@
 
 [Link naar de gedeployde Heroku app](https://minor-web-dev-fighter.herokuapp.com/)
 
-<!-- :bulb:  -->
-# Eindopdracht ideeën
+# Concept
 
-## :incoming_envelope: Steam chat app
+Minor Web Dev fighter is een simpele, turn based fighter game gemaakt met socket.io. Je kunt een een username invullen en een battle creëren of een bestaande battle joinen. Er kunnen maar twee personen in een battle. De app houd zelf bij wie er aan de beurt is en hoe veel HP een speler nog over heeft. Ze vechten tot één van de spelers verliest. Aan het einde is dan te zien we er gewonnen of verloren heeft. 
 
-Ik gebruik de steam API om de library van users op te halen en aan de hand van je gekochte games kan je een chat room aan maken met één of meerdere personen
-
-## :video_game: Turn based fighter game
-
-Ik gebruik een API (ik weer nog niet welke) om data op te halen van charcters die je kan kiezen om mee te vechten tegen andere spelers. Je vecht net als in pokémon of steen papier schaar met beurten. Je kunt kiezen uit verschillende aanvallen en wie als laatste over blijft wint. Je character kan je levelen als je meer vecht en worden daarmee je aanvallen en bescherming sterker.
-
-# Plan van aanpak
-
-Eerst moet ik natuurlijk één van de ideeën kiezen. Op dit moment neig ik toch meer naar het tweede idee. Maar voor beiden zijn de grote lijnen het zelfde. Het moet mogelijk zijn 
-om in te loggen en om scores of chats bij te houden per gebruiker. Daarvoor ben ik van plan om MongoDB of Firebase te gebruiken. Ik zal dus ook nog in de documentatie moeten duiken
-om te zorgen dat ik dat kan koppelen aan mijn server. Dan moet ik een API zoeken voor de fight game of gebruik ik de Steam API om de libraries op te halen. Er zal een starpagina nodig zijn
-waar de gebruiker op land als er is ingelogd. Daarna moet er functionaliteit komen die gebruikers aan elkaar link, dan wel voor een 'gevecht' of een chatroom. Voor de fight game
-moet er een damage en aanval systeem komen die damage waarden en aanvallen realtime bij houd en waarbij optioneel nog animaties bij komen. En ik moet de levels van chat rooms of characters
-bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar ik ga me hier eerst maar op focussen.
+Als ik meer tijd had gehad wilde ik nog meerdere aanvallen toevoegen die verschilde in damage. Ook was het vet geweest als een aanval kon missen of raken. Het spel word interessanter als je meer risico's kan nemen door bijvoorbeeld een high damage aanval te gebruiken die een hogere kans heeft om te missen. Ook kon ik character of user leveling implementeren en dat bijhouden in een json bestand of externe database. Daarvoor zou echter ook een login of authenticatie systeem voor nodig zijn.
 
 # Features lijst
 
@@ -103,11 +90,10 @@ Ruwe schetsen van de interface
 
 # API 
 
-Om de verschillende aanvallen per character te genereren wil ik de PokéApi gebruiken. 
-Daar kun je de namen van de aanvallen uit halen, de hoeveelheid damage die een aanval doet, hoe hoog de kans is dat een aanval succesvol word uitgevoerd en hoeveel het kost om een
-aanval uit te voeren. Het lijkt me cool om te implementeren dat een aanval kan falen. De pokémon haal ik er niet uit op. Ik wil mijn eigen fighters bedenken
+Om de verschillende aanvallen en mis kansen te kunnen generen gebruik ik de PokéApi. 
+Daar kun je de namen van de aanvallen uit halen, de hoeveelheid damage die een aanval doet, hoe hoog de kans is dat een aanval succesvol word uitgevoerd en hoeveel het kost om een aanval uit te voeren. De pokémon haal ik er niet uit op.
 
-voorbeeld van een endpoint met moves
+Voorbeeld van een endpoint met moves
 
 `https://pokeapi.co/api/v2/move/1/`
 
@@ -170,6 +156,26 @@ Embedded JavaScript templating.
 
 **[dotenv](https://www.npmjs.com/package/dotenv)** ![npm version](https://img.shields.io/npm/v/dotenv.svg?style=flat-square)<br>
 Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`.
+
+<!-- :bulb:  -->
+# Eindopdracht ideeën
+
+## :incoming_envelope: Steam chat app
+
+Ik gebruik de steam API om de library van users op te halen en aan de hand van je gekochte games kan je een chat room aan maken met één of meerdere personen
+
+## :video_game: Turn based fighter game
+
+Ik gebruik een API (ik weer nog niet welke) om data op te halen van charcters die je kan kiezen om mee te vechten tegen andere spelers. Je vecht net als in pokémon of steen papier schaar met beurten. Je kunt kiezen uit verschillende aanvallen en wie als laatste over blijft wint. Je character kan je levelen als je meer vecht en worden daarmee je aanvallen en bescherming sterker.
+
+# Plan van aanpak
+
+Eerst moet ik natuurlijk één van de ideeën kiezen. Op dit moment neig ik toch meer naar het tweede idee. Maar voor beiden zijn de grote lijnen het zelfde. Het moet mogelijk zijn 
+om in te loggen en om scores of chats bij te houden per gebruiker. Daarvoor ben ik van plan om MongoDB of Firebase te gebruiken. Ik zal dus ook nog in de documentatie moeten duiken
+om te zorgen dat ik dat kan koppelen aan mijn server. Dan moet ik een API zoeken voor de fight game of gebruik ik de Steam API om de libraries op te halen. Er zal een starpagina nodig zijn
+waar de gebruiker op land als er is ingelogd. Daarna moet er functionaliteit komen die gebruikers aan elkaar link, dan wel voor een 'gevecht' of een chatroom. Voor de fight game
+moet er een damage en aanval systeem komen die damage waarden en aanvallen realtime bij houd en waarbij optioneel nog animaties bij komen. En ik moet de levels van chat rooms of characters
+bij gaan houden. Alles wat ik daarna nog kan toevoegen zijn mooi meegenomen maar ik ga me hier eerst maar op focussen.
 
 <!-- :bookmark_tabs: -->
 # License
