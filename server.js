@@ -75,7 +75,7 @@ io.sockets.on('connection', (socket) => {
 
     socket.on('newUser', (data) => {
         const player = new Player(socket.id, data.username, 30)
-        console.log(data)
+        // console.log(data)
         socket.join(data.battleID)
         battles.forEach((battle) => {
             // battleID is from player, battle.id is from class
@@ -91,7 +91,7 @@ io.sockets.on('connection', (socket) => {
                 }
             }
         })
-        console.log(battles)
+        // console.log(battles)
     })
 
     // battles = [ Battle { id = 1, players = [ Player { id = '1A', name = 'Jan', hitpoints = 150}, Player { id = '2B', name = 'Piet', hitpoints = 150} ], hasTurn = 1A } ]
@@ -104,10 +104,10 @@ io.sockets.on('connection', (socket) => {
         const attacker = currentBattle.players.filter((player) => player.id == currentBattle.hasTurn)[0]
         console.log("Welke speler heeft de beurt ", currentBattle.hasTurn)
         if (currentBattle.hasTurn == attacker.id) {
-            console.log("heeft beurt ", attacker.name)
+            // console.log("heeft beurt ", attacker.name)
             // Check player who doesn't have turn
             let enemy = currentBattle.players.filter((player) => player.id !== currentBattle.hasTurn)[0]
-            console.log("heeft niet de beurt ", enemy.name)
+            // console.log("heeft niet de beurt ", enemy.name)
             // Damage enemy
             enemy.hitpoints = enemy.hitpoints - damage
             // Update turn
@@ -121,13 +121,13 @@ io.sockets.on('connection', (socket) => {
             console.log(currentBattle)
             io.to(data.battleID).emit('updateBattleInfo', currentBattle)
         }
-        console.log(data)
+        // console.log(data)
     })
 
     socket.on('checkHitpoints', (data) => {
         const currentBattle = battles.filter((battle) => battle.id == data.battleID)[0]
         currentBattle.players.forEach((player) => {
-            console.log(player.hitpoints)
+            // console.log(player.hitpoints)
             if (player.hitpoints <= 0) {
                 // console.log(player.name, player.id, "verliest")
                 app.get('/endbattle', (req, res) => {

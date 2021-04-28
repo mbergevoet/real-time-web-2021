@@ -14,7 +14,7 @@ socket.on('connect', () => {
 
 socket.on('updateBattleInfo', (battle) => {
     // console.log('show players ', battle.players[0].id)
-    console.log('battle info', battle)
+    // console.log('battle info', battle)
     addPlayer(battle.players)
     const currentTurn = battle.players.filter((player) => player.id == battle.hasTurn)[0]
     // console.log(currentTurn)
@@ -35,7 +35,7 @@ if (attackButton) {
 
 if (backButton) {
     backButton.addEventListener('click', (event) => {
-        console.log('click!')
+        // console.log('click!')
         window.location = "/joinbattle"
     })
 }
